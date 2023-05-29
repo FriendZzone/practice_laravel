@@ -28,7 +28,7 @@
     
 </table>
 @endsection
-
+@include('parts.backend.delete')
 @section('scripts')
 <script>
     $(document).ready(function () {

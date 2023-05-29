@@ -28,17 +28,17 @@ class UserController extends Controller
         $users = $this->userRepository->getAllUsers();
 
         return DataTables::of($users)
-        ->addColumn('edit', function ($user) {
-            return '<a href="'.route('admin.users.edit', $user).'" class="btn btn-warning">Sửa</a>';
-        })
-        ->addColumn('delete', function ($user) {
-            return '<a href="#" class="btn btn-danger">Xóa</a>';
-        })
-        ->editColumn('created_at', function ($user) {
-            return Carbon::parse($user->created_at)->format('d/m/Y H:i:s');
-        })
-        ->rawColumns(['edit', 'delete'])
-        ->toJson();
+            ->addColumn('edit', function ($user) {
+                return '<a href="' . route('admin.users.edit', $user) . '" class="btn btn-warning">Sửa</a>';
+            })
+            ->addColumn('delete', function ($user) {
+                return '<a href="' . route('admin.users.postDelete', $user) . '" class="btn btn-danger delete-action">Xóa</a>';
+            })
+            ->editColumn('created_at', function ($user) {
+                return Carbon::parse($user->created_at)->format('d/m/Y H:i:s');
+            })
+            ->rawColumns(['edit', 'delete'])
+            ->toJson();
     }
 
     public function create()
@@ -50,7 +50,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $this->userRepository->create([
-            'name'=> $request->name,
+            'name' => $request->name,
             'email' => $request->email,
             'group_id' => $request->group_id,
             'password' => bcrypt($request->password),
@@ -83,5 +83,10 @@ class UserController extends Controller
         $this->userRepository->update($id, $data);
 
         return back()->with('msg', __('user::messages.update.success'));
+    }
+    public function postDelete($id)
+    {
+        $this->userRepository->delete($id);
+        return back()->with('msg', __('user::messages.delete.success'));
     }
 }

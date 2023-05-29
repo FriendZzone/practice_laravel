@@ -2,11 +2,11 @@
 
 namespace Modules\User\seeders;
 
-use Modules\User\src\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Modules\User\src\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Faker;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -17,16 +17,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $faker = Faker\Factory::create();
+        $faker = Factory::create();
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($index = 1; $index <= 30; $index++){
             $user = new User();
             $user->name = $faker->name;
             $user->email = $faker->email;
-            $user->password = Hash::make(123456);
-            $user->group_id = rand(1, 3);
+            $user->password = Hash::make('123456');
+            $user->group_id = 1;
             $user->save();
         }
+
+        
     }
 }

@@ -6,7 +6,6 @@
 //
 // Scripts
 //
-
 window.addEventListener("DOMContentLoaded", (event) => {
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector("#sidebarToggle");
@@ -24,4 +23,27 @@ window.addEventListener("DOMContentLoaded", (event) => {
             );
         });
     }
+
+    const table = document.querySelector('#datatable')
+    const deleteForm = document.querySelector('.delete-form');
+    table.addEventListener("click", function (e) {
+        if (e.target.classList.contains('delete-action')) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const action = e.target.href;
+                    deleteForm.action = action;
+                    deleteForm.submit();
+                }
+            })
+        }
+    })
 });

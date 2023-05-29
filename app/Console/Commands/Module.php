@@ -132,6 +132,8 @@ class Module extends Command
                 if (!File::exists($modelsFolder)) {
                     File::makeDirectory($modelsFolder, 0755, true, true);
                 }
+<<<<<<< HEAD
+=======
 
                 //Repositories
                 $repositoriesFolder = base_path('modules/'.$name.'/src/Repositories');
@@ -161,6 +163,7 @@ class Module extends Command
                         File::put($moduleRepositoryInterfaceFile, $moduleRepositoryInterfaceFileContent);
                     }
                 }
+>>>>>>> 8748870e1619eb3e24cc4624312f0439068a5ded
             }
 
 

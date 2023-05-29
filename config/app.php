@@ -195,7 +195,14 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+<<<<<<< HEAD
+        Modules\ModuleServiceProvider::class,
+
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+=======
         Modules\ModuleServiceProvider::class
+>>>>>>> 8748870e1619eb3e24cc4624312f0439068a5ded
 
     ],
 

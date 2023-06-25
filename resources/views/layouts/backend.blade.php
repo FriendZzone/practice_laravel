@@ -103,8 +103,15 @@
     <script src="{{ asset('backend/js/demo/chart-pie-demo.js') }}"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('backend/plugins/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('backend/js/scripts.js') }}"></script>
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     @yield('scripts')
+    <script>
+        $('#lfm').filemanager('image');
+        $('#lfm').filemanager('file');
+    </script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Modules\User\src\Http\Controllers', 'middleware' => 'web'], function () {
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::prefix('users')->name('user.')->group(function () {
+        Route::prefix('users')->name('users.')->group(function () {
             Route::get('/', 'UserController@index')->name('index');
 
             Route::get('data', 'UserController@data')->name('data');
@@ -13,13 +13,13 @@ Route::group(['namespace' => 'Modules\User\src\Http\Controllers', 'middleware' =
 
             Route::post('create', 'UserController@store')->name('store');
 
-            Route::get('edit/{user}', 'UserController@edit')->name('edit');
+            Route::get('edit/{id}', 'UserController@edit')->name('edit');
 
-            Route::post('edit/{user}', 'UserController@update')->name('update');
+            Route::post('edit/{id}', 'UserController@postEdit')->name('postEdit');
 
-            Route::get('delete/{user}', 'UserController@delete')->name('delete');
+            Route::get('delete/{id}', 'UserController@delete')->name('delete');
 
-            Route::post('postDelete/{user}', 'UserController@postDelete')->name('postDelete');
+            Route::post('postDelete/{id}', 'UserController@postDelete')->name('postDelete');
         });
     });
 });

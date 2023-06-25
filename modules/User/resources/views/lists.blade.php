@@ -42,10 +42,10 @@
                 data: 'name',
             },
             {
-                data: 'email',
+                data: 'price',
             },
             {
-                data: 'group_id',
+                data: 'status',
             },
             {
                 data: 'created_at',

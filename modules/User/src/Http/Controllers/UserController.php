@@ -72,7 +72,7 @@ class UserController extends Controller
         return view('user::edit', compact('user', 'pageTitle'));
     }
 
-    public function update(UserRequest $request, $id)
+    public function postEdit(UserRequest $request, $id)
     {
         $data = $request->except('_token', 'password');
 
